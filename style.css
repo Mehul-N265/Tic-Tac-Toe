@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  background-color: #000000;
+  padding: 0px;
+  margin: 0;
+  color: white;
+}
+header {
+  text-align: center;
+  background-color: #0d0335e5;
+  color: wheat;
+  padding: 0.4rem;
+}
+header h1 {
+  display: inline;
+  font-family: "Ephesis";
+  font-size: 3rem;
+}
+.main-game {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  top: 15vh;
+}
+table {
+  border-collapse: collapse;
+}
+.cell {
+  border: 2px solid white;
+  height: 120px;
+  width: 120px;
+  font-family: "Jetbrains Mono", "Segoe UI", "Franklin Gothic Medium",
+    "Arial Narrow", Arial, sans-serif;
+  font-size: 3.5rem;
+  padding: 0.5rem;
+}
+td:first-child {
+  border-left: none;
+}
+td:last-child {
+  border-right: none;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+tr:first-child td {
+  border-top: none;
+}
+.cell:hover {
+  cursor: pointer;
+  background: linear-gradient(30deg, #0d0335e5, #ff9012);
+  transition: 0.3s ease-in-out;
+}
