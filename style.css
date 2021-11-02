@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 *,
 *::before,
 *::after {
@@ -17,7 +18,7 @@ header {
   padding: 0.4rem;
 }
 header h1 {
-  display: inline;
+  display: inline;  
   font-family: "Ephesis";
   font-size: 3rem;
 }
@@ -27,7 +28,7 @@ header h1 {
   justify-content: center;
   text-align: center;
   position: relative;
-  top: 15vh;
+  top: 10vh;
 }
 table {
   border-collapse: collapse;
@@ -55,6 +56,26 @@ tr:first-child td {
 }
 .cell:hover {
   cursor: pointer;
-  background: linear-gradient(30deg, #0d0335e5, #ff9012);
+  background: linear-gradient(100deg, #b40303e5, #159909);
   transition: 0.3s ease-in-out;
+}
+#reset {
+  background: #ec5e0b;
+  border: 2px solid red;
+  outline: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 40vw;
+  margin: 0.5rem;
+  position: relative;
+  left: 30vw;
+  bottom: -15vh;
+  border-radius: 10px;
+}
+#reset:hover {
+  background-color: rgb(255, 196, 0);
+  box-shadow: 1px 2px 6px 2px rgb(255, 115, 0);
+  transition:  0.3s ease-in-out;
+  cursor: pointer;
 }

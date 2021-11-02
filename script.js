@@ -1,5 +1,12 @@
 const gameBoard = document.querySelectorAll(".cell");
 const cells = Object.keys(gameBoard);
+const resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click',() =>{
+  for(let i = 0; i < gameBoard.length ; i++){
+    gameBoard[i].innerHTML = "";
+    gameBoard[i].style.background = "black  "
+  }
+})
 const winCombos = [
   [0, 1, 2],
   [3, 4, 5],
