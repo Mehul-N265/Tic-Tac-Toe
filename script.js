@@ -1,12 +1,12 @@
 const gameBoard = document.querySelectorAll(".cell");
 const cells = Object.keys(gameBoard);
-const resetBtn = document.querySelector('#reset');
-resetBtn.addEventListener('click',() =>{
-  for(let i = 0; i < gameBoard.length ; i++){
+const resetBtn = document.querySelector("#reset");
+resetBtn.addEventListener("click", () => {
+  for (let i = 0; i < gameBoard.length; i++) {
     gameBoard[i].innerHTML = "";
-    gameBoard[i].style.background = "black  "
+    gameBoard[i].style.background = "black  ";
   }
-})
+});
 const winCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -40,7 +40,6 @@ function userClick() {
         gameBoard[i].innerHTML = "X";
         gameBoard[i].style.background = "#419902";
         playerOccupiedCells.push(Number(gameBoard[i].id));
-        console.log(playerOccupiedCells);
 
         //calling computer function after user clicks
         computer();
@@ -74,7 +73,7 @@ function computer() {
     gameBoard[randomNum].innerHTML = "O";
     gameBoard[randomNum].style.background = "red";
     computerOccupiedCells.push(randomNum);
-    console.log(computerOccupiedCells, playerOccupiedCells);
+
     return;
   }
 }
@@ -87,7 +86,7 @@ function checkWinner() {
   let sortedComp = computerOccupiedCells.sort(function (a, b) {
     return a - b;
   });
-  console.log(sortedPlayer, sortedComp);
+
   for (let i = 0; i < winCombos.length; i++) {
     for (let j = 0; j < sortedPlayer.length; j++) {
       if (
