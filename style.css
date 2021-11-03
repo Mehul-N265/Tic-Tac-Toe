@@ -68,6 +68,7 @@ tr:first-child td {
   align-content: flex-end;
 }
 #reset {
+  opacity: 0.8;
   background: transparent;
   font-size: 3rem;
   padding: 0.5rem;
@@ -79,8 +80,36 @@ tr:first-child td {
   font-family: "Fruktur", Arial, Helvetica, sans-serif;
 }
 #reset:hover {
-  border: 2px solid orangered;
-  box-shadow: 8px 10px 0px 0px rgb(255, 115, 0);
-  transition: 0.35s ease-in-out;
+  opacity: 1;
+  animation-name: border-offset;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+ 
+  transition: 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
   cursor: pointer;
+}
+
+/* animation for button */
+@keyframes border-offset {
+  0%{
+    border-top: 2px solid #ff8800f3;
+    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  25% {
+    border-right: 2px solid #ff8800f3;
+    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  50%{
+    border-bottom: 2px solid #ff8800f3;
+    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  75%{
+    border-left: 2px solid #ff8800f3;
+    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+  }
+  100%{
+    border: 2px solid #ff8800f3;
+    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    box-shadow: 8px 10px 0px 0px #ff7300;
+  }
 }
