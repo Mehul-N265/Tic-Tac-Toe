@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Ephesis&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fruktur&display=swap");
 *,
 *::before,
 *::after {
@@ -18,7 +19,7 @@ header {
   padding: 0.4rem;
 }
 header h1 {
-  display: inline;  
+  display: inline;
   font-family: "Ephesis";
   font-size: 3rem;
 }
@@ -59,23 +60,27 @@ tr:first-child td {
   background: linear-gradient(100deg, #b40303e5, #159909);
   transition: 0.3s ease-in-out;
 }
-#reset {
-  background: #ec5e0b;
-  border: 2px solid red;
-  outline: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  width: 40vw;
-  margin: 0.5rem;
+.reset-div {
+  display: flex;
   position: relative;
-  left: 30vw;
-  bottom: -15vh;
-  border-radius: 10px;
+  bottom: -13vh;
+  justify-content: center;
+  align-content: flex-end;
+}
+#reset {
+  background: transparent;
+  font-size: 3rem;
+  padding: 0.5rem;
+  color: teal;
+  margin: 0.5rem;
+  outline: none;
+  width: 25%;
+  border: none;
+  font-family: "Fruktur", Arial, Helvetica, sans-serif;
 }
 #reset:hover {
-  background-color: rgb(255, 196, 0);
-  box-shadow: 1px 2px 6px 2px rgb(255, 115, 0);
-  transition:  0.3s ease-in-out;
+  border: 2px solid orangered;
+  box-shadow: 8px 10px 0px 0px rgb(255, 115, 0);
+  transition: 0.35s ease-in-out;
   cursor: pointer;
 }
