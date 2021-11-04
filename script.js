@@ -2,10 +2,7 @@ const gameBoard = document.querySelectorAll(".cell");
 const cells = Object.keys(gameBoard);
 const resetBtn = document.querySelector("#reset");
 resetBtn.addEventListener("click", () => {
-  for (let i = 0; i < gameBoard.length; i++) {
-    gameBoard[i].innerHTML = "";
-    gameBoard[i].style.background = "black  ";
-  }
+  resetBoard();
 });
 const winCombos = [
   [0, 1, 2],
@@ -47,13 +44,20 @@ function userClick() {
           computerOccupiedCells.length !== 9 &&
           playerOccupiedCells.length !== 9
         ) {
-          checkWinner();
+          setTimeout(() => {
+            checkWinner();
+          }, 250);
         }
       }
     });
   }
 }
-
+function resetBoard() {
+  for (let i = 0; i < gameBoard.length; i++) {
+    gameBoard[i].innerHTML = "";
+    gameBoard[i].style.background = "black  ";
+  }
+}
 function computer() {
   let unoccupied = [];
 
@@ -80,130 +84,63 @@ function computer() {
 
 //check who wins
 function checkWinner() {
-  let sortedPlayer = playerOccupiedCells.sort(function (a, b) {
-    return a - b;
-  });
-  let sortedComp = computerOccupiedCells.sort(function (a, b) {
-    return a - b;
-  });
-
-  for (let i = 0; i < winCombos.length; i++) {
-    for (let j = 0; j < sortedPlayer.length; j++) {
-      if (
-        sortedPlayer[0] === winCombos[i][0] &&
-        sortedPlayer[1] === winCombos[i][1] &&
-        sortedPlayer[2] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      } else if (
-        sortedPlayer[3] === winCombos[i][0] &&
-        sortedPlayer[4] === winCombos[i][1] &&
-        sortedPlayer[5] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      } else if (
-        sortedPlayer[6] === winCombos[i][0] &&
-        sortedPlayer[7] === winCombos[i][1] &&
-        sortedPlayer[8] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      } else if (
-        sortedPlayer[0] === winCombos[i][0] &&
-        sortedPlayer[4] === winCombos[i][1] &&
-        sortedPlayer[8] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      } else if (
-        sortedPlayer[2] === winCombos[i][0] &&
-        sortedPlayer[4] === winCombos[i][1] &&
-        sortedPlayer[6] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      } else if (
-        sortedPlayer[0] === winCombos[i][0] &&
-        sortedPlayer[3] === winCombos[i][1] &&
-        sortedPlayer[6] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      } else if (
-        sortedPlayer[1] === winCombos[i][0] &&
-        sortedPlayer[4] === winCombos[i][1] &&
-        sortedPlayer[7] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      } else if (
-        sortedPlayer[2] === winCombos[i][0] &&
-        sortedPlayer[5] === winCombos[i][1] &&
-        sortedPlayer[8] === winCombos[i][2]
-      ) {
-        alert("player wins");
-        return;
-      }
-      //check for comp
-      if (
-        sortedComp[0] === winCombos[i][0] &&
-        sortedComp[1] === winCombos[i][1] &&
-        sortedComp[2] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      } else if (
-        sortedComp[3] === winCombos[i][0] &&
-        sortedComp[4] === winCombos[i][1] &&
-        sortedComp[5] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      } else if (
-        sortedComp[6] === winCombos[i][0] &&
-        sortedComp[7] === winCombos[i][1] &&
-        sortedComp[8] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      } else if (
-        sortedComp[0] === winCombos[i][0] &&
-        sortedComp[4] === winCombos[i][1] &&
-        sortedComp[8] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      } else if (
-        sortedComp[2] === winCombos[i][0] &&
-        sortedComp[4] === winCombos[i][1] &&
-        sortedComp[6] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      } else if (
-        sortedComp[0] === winCombos[i][0] &&
-        sortedComp[3] === winCombos[i][1] &&
-        sortedComp[6] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      } else if (
-        sortedComp[1] === winCombos[i][0] &&
-        sortedComp[4] === winCombos[i][1] &&
-        sortedComp[7] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      } else if (
-        sortedComp[2] === winCombos[i][0] &&
-        sortedComp[5] === winCombos[i][1] &&
-        sortedComp[8] === winCombos[i][2]
-      ) {
-        alert("computer wins");
-        return;
-      }
-    }
+  if (
+    (gameBoard[0].textContent === "X" &&
+      gameBoard[1].textContent === "X" &&
+      gameBoard[2].textContent === "X") ||
+    (gameBoard[3].textContent === "X" &&
+      gameBoard[4].textContent === "X" &&
+      gameBoard[5].textContent === "X") ||
+    (gameBoard[6].textContent === "X" &&
+      gameBoard[7].textContent === "X" &&
+      gameBoard[8].textContent === "X") ||
+    (gameBoard[0].textContent === "X" &&
+      gameBoard[3].textContent === "X" &&
+      gameBoard[6].textContent === "X") ||
+    (gameBoard[1].textContent === "X" &&
+      gameBoard[4].textContent === "X" &&
+      gameBoard[7].textContent === "X") ||
+    (gameBoard[2].textContent === "X" &&
+      gameBoard[5].textContent === "X" &&
+      gameBoard[8].textContent === "X") ||
+    (gameBoard[0].textContent === "X" &&
+      gameBoard[4].textContent === "X" &&
+      gameBoard[8].textContent === "X") ||
+    (gameBoard[2].textContent === "X" &&
+      gameBoard[4].textContent === "X" &&
+      gameBoard[6].textContent === "X")
+  ) {
+    alert("Player Wins!!");
+    resetBoard();
+    return;
+  } else if (
+    (gameBoard[0].textContent === "O" &&
+      gameBoard[1].textContent === "O" &&
+      gameBoard[2].textContent === "O") ||
+    (gameBoard[3].textContent === "O" &&
+      gameBoard[4].textContent === "O" &&
+      gameBoard[5].textContent === "O") ||
+    (gameBoard[6].textContent === "O" &&
+      gameBoard[7].textContent === "O" &&
+      gameBoard[8].textContent === "O") ||
+    (gameBoard[0].textContent === "O" &&
+      gameBoard[3].textContent === "O" &&
+      gameBoard[6].textContent === "O") ||
+    (gameBoard[1].textContent === "O" &&
+      gameBoard[4].textContent === "O" &&
+      gameBoard[7].textContent === "O") ||
+    (gameBoard[2].textContent === "O" &&
+      gameBoard[5].textContent === "O" &&
+      gameBoard[8].textContent === "O") ||
+    (gameBoard[0].textContent === "O" &&
+      gameBoard[4].textContent === "O" &&
+      gameBoard[8].textContent === "O") ||
+    (gameBoard[2].textContent === "O" &&
+      gameBoard[4].textContent === "O" &&
+      gameBoard[6].textContent === "O")
+  ) {
+    alert("Computer Wins!!");
+    resetBoard();
+    return;
   }
 }

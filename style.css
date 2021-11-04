@@ -82,7 +82,7 @@ tr:first-child td {
 #reset:hover {
   opacity: 1;
   animation-name: border-offset;
-  animation-duration: 3s;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
  
   transition: 0.35s cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -93,23 +93,23 @@ tr:first-child td {
 @keyframes border-offset {
   0%{
     border-top: 2px solid #ff8800f3;
-    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: 0.5s ease-out;
   }
   25% {
     border-right: 2px solid #ff8800f3;
-    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: 0.5s ease-out;
   }
   50%{
     border-bottom: 2px solid #ff8800f3;
-    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: 0.5s ease-out;
   }
   75%{
     border-left: 2px solid #ff8800f3;
-    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: 0.5s ease-out;
   }
   100%{
     border: 2px solid #ff8800f3;
-    transition: 0.5s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition: 0.5s ease-out;
     box-shadow: 8px 10px 0px 0px #ff7300;
   }
 }
