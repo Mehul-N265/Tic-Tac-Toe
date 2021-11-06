@@ -116,5 +116,5 @@ function boardReset(board) {
   for (let i = 0; i < board.length; i++) {
     board[i].textContent = "";
     board[i].style.background = "black";
-  }
+  } 
 }
