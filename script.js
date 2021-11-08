@@ -22,6 +22,12 @@ function unoccupiedSpaces() {
   }
   return spaces;
 }
+// function to check draw
+function checkDraw(){
+  if(unoccupiedSpaces().length === 0){
+    alert("It's a Draw!")
+  }
+}
 
 //function to check who is winning
 function checkWhoWins(board, player) {
@@ -81,7 +87,10 @@ function checkWhoWins(board, player) {
   ) {
     setTimeout(alert(`${player} wins!`), 400);
 
-    return { gameOver: true, whoWon: player };
+    return true;
+  }else {
+    checkDraw();
+    return false;
   }
 }
 
