@@ -1,7 +1,11 @@
 let gameBoard = document.querySelectorAll(".cell");
 const resetBtn = document.querySelector("#reset");
-const humanPlayer = "X";
-const cpu = "O";
+const humanPlayer = "O";
+const cpu = "X";
+let indexBoard = Array.from(Array(9).keys);
+const declareWinner = document.querySelector(".declare-winner");
+console.log(declareWinner);
+console.log(indexBoard);
 //
 startEngine();
 resetBtn.addEventListener("click", () => boardReset(gameBoard));
@@ -12,76 +16,103 @@ function startEngine() {
 
 //looping through the board to find out unoccupied places
 //PS : board should always be an array of elements!
-console.log(unoccupiedSpaces());
-function unoccupiedSpaces() {
+
+function unoccupiedSpaces(board) {
   let spaces = [];
-  for (let i = 0; i < gameBoard.length; i++) {
-    if (gameBoard[i].innerHTML === "") {
-      spaces.push(Number(gameBoard[i].id));
+  for (let i = 0; i < board.length; i++) {
+    if (board[i].innerHTML === "") {
+      spaces.push(Number(board[i].id));
     }
   }
   return spaces;
 }
+// function to check draw
+function checkDraw() {
+  if (unoccupiedSpaces(gameBoard).length === 0) {
+    declareWinner.style.display = "flex";
+    declareWinner.style.background = "goldenrod";
+    declareWinner.innerHTML = `No one wins! Tie!`
+    return true;
+  }
+}
 
-//function to check who is winning
+//function to check who is checkWhoWins
 function checkWhoWins(board, player) {
   if (
     board[0].innerHTML === player &&
     board[1].innerHTML === player &&
     board[2].innerHTML === player
   ) {
-    alert(`${player} wins!`);
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
     return { gamestate: "won", whoWon: player };
   } else if (
     board[3].innerHTML === player &&
     board[4].innerHTML === player &&
     board[5].innerHTML === player
   ) {
-    alert(`${player} wins!`);
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
     return { gamestate: "won", whoWon: player };
   } else if (
     board[6].innerHTML === player &&
     board[7].innerHTML === player &&
     board[8].innerHTML === player
   ) {
-    alert(`${player} wins!`);
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
     return { gamestate: "won", whoWon: player };
   } else if (
     board[0].innerHTML === player &&
     board[3].innerHTML === player &&
     board[6].innerHTML === player
   ) {
-    alert(`${player} wins!`);
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
     return { gamestate: "won", whoWon: player };
   } else if (
     board[1].innerHTML === player &&
     board[4].innerHTML === player &&
     board[7].innerHTML === player
   ) {
-    alert(`${player} wins!`);
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
     return { gamestate: "won", whoWon: player };
   } else if (
     board[2].innerHTML === player &&
     board[5].innerHTML === player &&
     board[8].innerHTML === player
   ) {
-    alert(`${player} wins!`);
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
     return { gamestate: "won", whoWon: player };
   } else if (
     board[0].innerHTML === player &&
     board[4].innerHTML === player &&
     board[8].innerHTML === player
   ) {
-    alert(`${player} wins!`);
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
     return { gamestate: "won", whoWon: player };
   } else if (
     board[2].innerHTML === player &&
     board[4].innerHTML === player &&
     board[6].innerHTML === player
   ) {
-    setTimeout(alert(`${player} wins!`), 400);
-
-    return { gameOver: true, whoWon: player };
+    declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
+    return true;
+  } else {
+    checkDraw();
+    return false;
   }
 }
 
@@ -92,7 +123,7 @@ function humanPlayerClick() {
         alert("Space already occupied! Please play a valid move.");
         return;
       } else {
-        gameBoard[i].innerHTML = "X";
+        gameBoard[i].innerHTML = humanPlayer;
         gameBoard[i].style.background = "#28c202";
         checkWhoWins(gameBoard, humanPlayer);
         //calling computerTurn fuction just after user clicks the cell;
@@ -104,11 +135,17 @@ function humanPlayerClick() {
 }
 //computerTurn function makes ai play its move;
 function computerTurn() {
-  let spaces = unoccupiedSpaces();
-  let static = spaces[Math.floor(Math.random() * spaces.length)];
-  gameBoard[static].textContent = "O";
-  gameBoard[static].style.background = "#e30505";
-  checkWhoWins(gameBoard, cpu);
+  if (checkWhoWins(gameBoard, humanPlayer)) {
+    return;
+  } else {
+    let spaces = unoccupiedSpaces(gameBoard);
+    let static =
+      spaces[Math.abs(Math.floor(Math.random() * spaces.length))];
+    gameBoard[static].textContent = cpu;
+    gameBoard[static].style.background = "#e30505";
+    checkWhoWins(gameBoard, cpu);
+    
+  }
 }
 
 //reset the board after win and after draw or when the reset btn clicked
@@ -116,5 +153,6 @@ function boardReset(board) {
   for (let i = 0; i < board.length; i++) {
     board[i].textContent = "";
     board[i].style.background = "black";
-  } 
+  }
+  declareWinner.style.display = 'none'
 }
