@@ -43,72 +43,56 @@ function checkWhoWins(board, player) {
     board[1].innerHTML === player &&
     board[2].innerHTML === player
   ) {
-  declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
-    return { gamestate: "won", whoWon: player };
+  popUp(player);
+    return true;
   } else if (
     board[3].innerHTML === player &&
     board[4].innerHTML === player &&
     board[5].innerHTML === player
   ) {
-  declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
-    return { gamestate: "won", whoWon: player };
+  popUp(player);
+    return true;
   } else if (
     board[6].innerHTML === player &&
     board[7].innerHTML === player &&
     board[8].innerHTML === player
   ) {
-  declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
-    return { gamestate: "won", whoWon: player };
+  popUp(player);
+    return true;
   } else if (
     board[0].innerHTML === player &&
     board[3].innerHTML === player &&
     board[6].innerHTML === player
   ) {
-  declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
-    return { gamestate: "won", whoWon: player };
+  popUp(player);
+    return true;
   } else if (
     board[1].innerHTML === player &&
     board[4].innerHTML === player &&
     board[7].innerHTML === player
   ) {
-  declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
-    return { gamestate: "won", whoWon: player };
+  popUp(player);
+    return true;
   } else if (
     board[2].innerHTML === player &&
     board[5].innerHTML === player &&
     board[8].innerHTML === player
   ) {
-  declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
-    return { gamestate: "won", whoWon: player };
+  popUp(player);
+    return true;
   } else if (
     board[0].innerHTML === player &&
     board[4].innerHTML === player &&
     board[8].innerHTML === player
   ) {
-  declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
-    return { gamestate: "won", whoWon: player };
+  popUp(player);
+    return true;
   } else if (
     board[2].innerHTML === player &&
     board[4].innerHTML === player &&
     board[6].innerHTML === player
   ) {
-    declareWinner.style.display = "flex";
-    declareWinner.style.background = "#16ab11";
-    declareWinner.innerHTML = `${player} wins!!`
+    popUp(player);
     return true;
   } else {
     checkDraw();
@@ -155,4 +139,11 @@ function boardReset(board) {
     board[i].style.background = "black";
   }
   declareWinner.style.display = 'none'
+}
+function popUp(player){
+  declareWinner.style.display = "flex";
+    declareWinner.style.background = "#16ab11";
+    declareWinner.innerHTML = `${player} wins!!`
+declareWinner.style.display = "flex";
+declareWinner.style.height = "5vh"
 }
